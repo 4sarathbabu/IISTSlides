@@ -1,0 +1,65 @@
+Beamer style for IIST 
+===================== 
+
+This is an attempt to learn how to create styles in LaTeX rather 
+than creating documents using existing styles. To make the theme 
+simple, we make use of only two lines, two squares and the default 
+LaTeX font for the entire document. The style is defined in 
+'beamerthemeiist.sty'. We added proper comments in the definition 
+script so that you can also customize the theme, if you want. Hope 
+you enjoy the theme.
+
+Note: There is no compulsion to use this theme. If you don't like it, 
+please delete it for ever from your system. You can use 'Shift + Del' 
+key so that it will removed, even from your Recyle bin/Trash.  
+
+
+How to use the theme
+--------------------
+
+* As the first step, extract the zip file. You can have a file named 
+  'pres.tex' as the source, that you need to compile using your 
+  LaTeX software. I added some of the basic LaTeX constructs to get 
+  familiarize with the theme. You can replace the content in 
+  'pres.tex' with your own content.
+
+* The file 'pres.bib' is for bibliography. You can put all the bibtex 
+  entries in 'pres.bib'. 
+
+* Please don't delete IIST logo ('logo.pdf') from the folder. 
+
+* For those who are familiar with Linux command line, I created a 
+  'Makefile' to make the compile process simple. Running the 'make' 
+  command will compile and generate the pdf. The command 'make 
+  clean' will delete all the unwanted files created during the 
+  compile process.
+
+
+Prerequisites for the theme
+---------------------------
+
+For GNU/Linux
+--------------
+
+* Make sure that the following packages are installed. If not, 
+  install them using the following command (For Ubuntu/Debian systems)
+
+  $ sudo apt-get install latexmk texlive-fonts-recommended \
+    texlive-latex-extra texlive-bibtex-extra biber
+    
+For Windows
+-----------
+
+* Make sure that the packages such as bibtex, biber etc. are 
+  properly installed. It is recommended to install the complete 
+  LaTeX package.
+
+If you have any comments OR if you find any errors with the code, 
+please send me a mail with the error report (if possible along with 
+the .tex file). 
+Note: Errors are preferred to comments.
+
+Thank you. 
+----------------------------------------------------------------------
+Sarath Babu 
+E-Mail: sarath.babu.2014@ieee.org

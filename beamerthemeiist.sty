@@ -1,0 +1,311 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ------------Beamer Presentation Template for IIST-------------- %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Author - Sarath Babu
+%%% Email: 4sarathbabu@gmail.com
+
+%%% The preamble 
+\mode<presentation>
+\usepackage{pgfcomp-version-0-65}
+\usepackage{color}
+\usepackage[framemethod=TikZ]{mdframed}
+\usetikzlibrary{shadows}
+\usepackage[size=scriptsize]{caption}
+\usepackage[absolute, overlay]{textpos}
+
+%%% Define custom commands for the slides
+%% Command for advisor in the title page
+\newcommand{\advisor}[2]
+{
+	\newcommand{\advisordesc}{#1}
+	\newcommand{\advisorname}{#2}
+}
+
+%% Command for a figure at the bottom (optional for conference logo)
+\newcommand{\bottomfigure}[1]
+{
+	\newcommand{\BottomFigure}{#1}
+}
+
+%%% Defining required colors for the style
+\definecolor{TitleBlack}{rgb}{0, 0, 0} % Usual black
+\definecolor{TopLine}{RGB}{0, 147, 221} % Light blue from logo
+\definecolor{BottomLine}{RGB}{213, 187, 146} % Light cream from logo
+\definecolor{BulletGreen}{RGB}{147, 176, 94} % Light green from logo
+\definecolor{CustomBlue}{RGB}{24, 100, 196} % Dark blue for some fonts
+
+%% Defining footnote font size
+\setbeamerfont{footnote}{size=\tiny}
+
+%% Rectangle theme for inner component style
+\useinnertheme{rectangles}
+
+%%% Apply different colors to beamer components
+
+%% Color for frame-title
+\setbeamercolor{frametitle}{fg = TitleBlack}
+
+%% Set style for the table of contents (outline) frame
+\setbeamerfont{subsection in toc}{size=\footnotesize}
+\setbeamercolor{section in toc}{fg = TitleBlack}
+\setbeamercolor{section in toc square}{fg = TitleBlack}
+
+%% Color for items in itemization, enumeration and description
+\setbeamertemplate{itemize/enumerate subbody begin}{\footnotesize}
+\setbeamertemplate{itemize/enumerate subsubbody begin}{\scriptsize}
+\setbeamercolor{item}{fg = TitleBlack}
+\setbeamercolor{subitem}{fg = TitleBlack}
+\setbeamercolor{subsubitem}{fg = TitleBlack}
+
+%% Style for the bullets of 'itemize'
+\setbeamertemplate{itemize items}{\textcolor{BulletGreen}{\raisebox{.45ex}{\rule{1ex}{1ex}}}}
+
+%% Style for the bullets of 'enumerate'
+\setbeamertemplate{enumerate items}[square]
+\setbeamercolor{item projected}{bg=BulletGreen, fg=white}
+
+%% Style for the bullets of 'description'
+\setbeamercolor{description item}{fg = BulletGreen}
+
+%% Set style for captions of figures and tables
+\setbeamercolor{caption}{fg = TitleBlack}
+\setbeamercolor{caption name}{fg = TitleBlack}
+
+%% Define the figure captions as numbered
+\setbeamertemplate{caption}[numbered]
+\captionsetup{format=plain, labelfont={bf}, labelsep=colon}
+
+%% Defining blocks
+\setbeamertemplate{blocks}[rounded][shadow=true] % For rounded edges
+
+%% Normal block
+\setbeamercolor{block body}{bg = TopLine!10}
+\setbeamercolor{block title}{fg = TopLine!200, bg = TopLine!50}
+
+%% Example block
+\setbeamercolor{block title example}{fg = BulletGreen!200, bg = BulletGreen!50}
+\setbeamercolor{block body example}{bg = BulletGreen!10}
+
+%% Alert block
+\setbeamercolor{block title alerted}{fg = red!150, bg = red!30}
+\setbeamercolor{block body alerted}{bg = red!5}
+
+%% Color of normal text
+\setbeamercolor{normal text}{fg = TitleBlack}
+
+%% Color of buttons (For example, hyperlink buttons)
+\setbeamercolor{button}{bg=CustomBlue!70,fg=white}
+
+%% Font for presentation
+\usefonttheme{default}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% --------------------Design of the Frame-------------------------%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Define two squares and parallel lines for for each frame's top
+\newcommand{\LogoLine}
+{	
+	\raisebox{-10mm}[0pt][0pt]
+	{
+		\begin{pgfpicture}{0mm}{0mm}{0mm}{0mm}
+			\pgfsetlinewidth{0.1mm}			
+			\color{BottomLine!60}      	
+			\pgfrect[fill]{\pgfpoint{4mm}{2mm}}{\pgfpoint{3mm}{3mm}}
+			\ifx\insertframetitle\empty
+			\else
+				\color{BottomLine}  
+				\pgfline{\pgfpoint{7.5mm}{1.75mm}}{\pgfpoint{11.68cm}{1.75mm}}
+			\fi
+			\color{TopLine!50}
+			\pgfrect[fill]{\pgfpoint{1mm}{5mm}}{\pgfpoint{3mm}{3mm}}
+			\ifx\insertframetitle\empty
+			\else
+				\color{TopLine}
+				\pgfline{\pgfpoint{7.5mm}{2.25mm}}{\pgfpoint{11.64cm}{2.25mm}}
+			\fi
+			\hspace{11.6cm}\vspace*{-4mm}\includegraphics[height=1cm, width=1cm]{logo.pdf}      	    	
+		\end{pgfpicture}
+	}
+}
+
+%% Design of the headline of each frame
+\setbeamercolor*{section in head/foot}{parent=palette tertiary}
+\setbeamercolor*{subsection in head/foot}{parent=palette primary}
+
+\defbeamertemplate*{headline}{withlink theme}
+{
+	\leavevmode
+	\hbox
+	{
+		\setbeamercolor{sec}{fg=TitleBlack, bg=white}
+		\hspace{-2mm}
+		\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=0.75ex,right]{sec}
+			\usebeamerfont{section in head/foot}{\textsc{\insertsectionhead}}\hspace*{2ex}
+		\end{beamercolorbox}
+		\setbeamercolor{subsec}{fg=TopLine!150,bg=white}
+		\hspace{-2mm}
+		\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=0.75ex,left]{subsec}
+			\usebeamerfont{subsection in head/foot}{\hspace*{2ex}{\texttt{\insertsubsectionhead}}}
+		\end{beamercolorbox}
+	}
+	\hfill
+	\hspace{0cm}\LogoLine
+} 
+
+%% Font size and positioning of the frame titles
+\setbeamerfont{frametitle}{size = \Large}
+\setbeamertemplate{frametitle}{
+\vspace*{1.5mm}\hspace*{-1mm}\insertframetitle}
+
+%% Define a command 'footlinebar;for drawing two parallel lines at 
+%% the bottom of each frame 
+\newcommand{\footlinebar}
+{
+	\raisebox{2mm}[0pt][0pt]
+	{
+		\begin{pgfpicture}{0mm}{0mm}{0mm}{0mm}
+			\pgfsetlinewidth{0.1mm}
+			\color{BottomLine}      	
+			\pgfline{\pgfpoint{-1mm}{1mm}}{\pgfpoint{12cm}{1mm}}
+			\color{TopLine}      	
+			\pgfline{\pgfpoint{-1mm}{0.5mm}}{\pgfpoint{12cm}{0.5mm}}			
+			\end{pgfpicture}  
+	}
+  	\ifx\author\empty
+		\hspace{-2mm}{\insertauthor}		
+	\else
+		\hspace{-2mm}\insertshortauthor 
+  	\fi
+	\hfill
+	{
+		\color{CustomBlue}
+		\ifx\insertshorttitle\empty
+			\textsc{\inserttitle}
+		\else
+			\textsc{\insertshorttitle}
+		\fi
+	}
+	\hfill
+  	\insertshortdate \hspace{5mm} \insertframenumber/\inserttotalframenumber
+} 
+
+%% Definition of the footline area for each frame
+\setbeamertemplate{footline}
+{
+	\usebeamerfont{structure}	
+  	\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{title in head/foot}
+    	\tiny\hspace*{2mm} \footlinebar \hspace{4mm}
+  	\end{beamercolorbox}
+}
+
+%% Disable the navigation symbols in frames
+\setbeamertemplate{navigation symbols}{}
+  	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% --------------------Design of the Title Page--------------------%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{title}{bg=orange, fg=TitleBlack}
+\setbeamerfont{title}{size=\huge}
+
+\setbeamertemplate{title page}
+{
+	\centering	
+	\vspace{-2mm}
+	%% Drawing two parallel lines at the top
+	\begin{textblock*}{\paperwidth}(0cm,0.1cm)
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{Title}
+			\begin{pgfpicture}{0mm}{0mm}{\paperwidth}{10mm}
+				\pgfsetlinewidth{0.1mm}
+				\color{BottomLine}
+				\pgfline{\pgfpoint{3mm}{0mm}}{\pgfpoint{125mm}{0mm}}
+				\color{TopLine}
+				\pgfline{\pgfpoint{3mm}{0.5mm}}{\pgfpoint{125mm}{0.5mm}}		
+			\end{pgfpicture} 
+		\end{beamercolorbox}
+	\end{textblock*}
+	
+	\vspace{0.25cm}
+	\ifx\inserttitle\empty
+	\else
+		\setbeamercolor{title}{bg=orange, fg=white}
+                {\begin{mdframed}[backgroundcolor=TopLine!10, linecolor=white,
+                    shadow=true, shadowsize=4pt,
+                    roundcorner=4pt]
+                    \begin{center}\Large\textbf{\inserttitle}\end{center}\end{mdframed}} % Title
+	\fi
+	
+   	\ifx\insertsubtitle\empty		
+	\else
+		{\footnotesize \insertsubtitle} % Subtitle
+	\fi
+	
+	\ifx\author\empty		
+	\else
+		\vspace{0.5cm}
+		{\footnotesize \insertauthor} % Author
+	\fi	
+	
+	\ifdefined\advisorname
+		\vspace{0.2cm} % Advisor
+		{\footnotesize {\color{TopLine}\advisordesc: }\advisorname}
+	\else
+	\fi
+	
+	\vspace{0.5cm}
+	\includegraphics[width=1.5cm, height=1.5cm]{logo.pdf} % Logo
+	
+	\vspace{0.5cm}
+	{\footnotesize \textsc{\insertinstitute}} % Institute name
+	
+	\vspace{0.5cm}
+	{\scriptsize \insertdate} % Date
+
+	% Drawing two parallel lines at the bottom
+	\begin{textblock*}{\paperwidth}(0cm,0.92\paperheight)
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{Title}
+			\begin{pgfpicture}{0mm}{0mm}{\paperwidth}{1mm}				
+				\pgfsetlinewidth{0.1mm}
+				\color{BottomLine}
+				\pgfline{\pgfpoint{2.5mm}{0.5mm}}{\pgfpoint{125mm}{0.5mm}}		
+				\color{TopLine}
+				\pgfline{\pgfpoint{2.5mm}{0mm}}{\pgfpoint{125mm}{0mm}}							
+			\end{pgfpicture} 
+		\end{beamercolorbox}		
+	\end{textblock*}	
+	\ifdefined\BottomFigure
+	\vspace*{-2mm}
+		\BottomFigure % Bottom figure
+	\else
+	\fi	
+}
+
+
+% Shade definition for the line used in customframes
+\pgfdeclarehorizontalshading{doubleShade}{0.5pt}{color(0cm)=(white); 
+color(.5\textwidth)=(TopLine); color(\textwidth)=(white)}
+
+%% Definition for the custom frame
+\newcommand{\customframe}[2]{
+\begin{frame}[plain]
+\begin{center}
+
+%% Definition for custom frame
+\begin{pgfpicture}{0mm}{0mm}{\paperwidth}{\paperheight}
+	\pgfputat{\pgfxy(5.5,5)}{\pgfbox[center,center]{\huge #1}}
+	\pgfputat{\pgfxy(5.5,4.6)}{\pgfuseshading{doubleShade}}
+	\pgfputat{\pgfxy(5.5,4.4)}{\pgfbox[center,center]{\color{TopLine!100}\scriptsize{#2}}}
+	\pgfputat{\pgfxy(11.175,9.065)}{\pgfbox[center,center]{\includegraphics[height=1cm, width=1cm]{logo.pdf}}}
+	\pgfsetlinewidth{0.1mm}
+	\color{BottomLine}
+	\color{TopLine}
+\end{pgfpicture} 
+\end{center}
+\end{frame}
+}
+
+\mode
+<all>  	  

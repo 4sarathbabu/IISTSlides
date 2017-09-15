@@ -1,0 +1,200 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\setbeamertemplate{bibliography item}[text]
+\usepackage{biblatex}
+%\usepackage[style=numeric, backend=bibtex]{biblatex}
+
+\usepackage{sansmathaccent}
+\pdfmapfile{+sansmathaccent.map}
+
+\renewcommand{\bibfont}{\tiny}
+
+%% Add your bibliography, i.e., bibtex file here
+\addbibresource{pres.bib}
+
+%% Using the iist theme
+\usetheme{iist}
+%% Assigning the date. You can use custom date as 
+%% \date{01 January, 2015}
+\date{\today}
+
+%% Add title, subtitle, authors
+\title[$\quad\quad$ Short title]{Title}
+\subtitle{}
+\author[Author-1 \& Author-2]{Author 1 and Author 2}
+
+%% Advisor/research supervisor is optional. If you don't want just 
+%% comment it.
+\advisor{Research advisor}{Name}
+
+%% You can add a figure at the bottom of the title page. It will be 
+%% nice if you can add a logo of the conference that you are presenting 
+%% in your slides. If you want logo, just uncomment this line.
+%% \bottomfigure{\hspace*{9cm}\includegraphics[scale=0.1]{figures/conf.png}}
+
+
+%% Assigning institute name. If you want department also, just add 
+%% before the Institute name.
+\institute[IIST]{Indian Institute of Space Science and Technology \\
+Thiruvananthapuram, Kerala, India 695547 \\}
+
+\begin{document}
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+\end{frame}
+
+
+\section{Listing}
+\subsection{Itemization}
+\begin{frame}
+	\frametitle{Itemize}
+		\begin{itemize}
+ 			\item Item 1
+ 			\item Item 2
+ 			\begin{itemize}
+				\item Subitem 2.1
+				\begin{itemize}
+					\item Subsubitem 2.1.1
+					\item Subsubitem 2.1.2
+				\end{itemize}
+				\item Subitem 2.2
+ 			\end{itemize}
+ 			\item Item 3
+ 		\end{itemize} 		
+\end{frame}
+
+\subsection{Enumeration}
+\begin{frame}
+	\frametitle{Enumerate}
+	\begin{enumerate}					
+		\item <1-> Item 1
+		\item <2-> Item 2
+		\item <3-> Item 3
+	\end{enumerate}				
+\end{frame}
+
+
+\subsection{Description}
+\begin{frame}
+	\frametitle{Description}
+		\begin{description}
+			\item [One] Item 1
+			\item [Two] Item 2
+		\end{description}
+\end{frame}	
+
+\section{Blocks}
+\subsection{Different blocks}
+\begin{frame}
+	\frametitle{Blocks}
+		\begin{block}{Block}
+			This is a sample block
+		\end{block}
+\end{frame}
+\begin{frame}
+		\frametitle{Example block}
+		\begin{exampleblock}{Example}
+			This is a sample example block
+		\end{exampleblock}
+\end{frame}
+\begin{frame}
+		\frametitle{Alert block}
+		\begin{alertblock}{Alert}
+			This is a sample alert block
+		\end{alertblock}
+\end{frame}	
+
+\section{Figures \& Columns}
+\subsection{Figures}
+\begin{frame}
+	\frametitle{Including figure}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.1]{figures/latexlogo.png}
+		\caption{\LaTeX-logo}
+	\end{figure}
+\end{frame}
+
+\subsection{Columns}
+\begin{frame}
+	\frametitle{Multiple columns}
+	\begin{columns}
+		\begin{column}{0.5\paperwidth}
+		 \begin{figure}
+			\centering
+			\includegraphics[scale=0.1]{figures/latexlogo.png}
+			\caption{\LaTeX-logo}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.5\paperwidth}
+		 \begin{itemize}
+			\item Item 1
+			\item Item 2
+			\item Item 3
+		 \end{itemize}
+		\end{column}	
+	\end{columns}
+\end{frame}
+
+\section{Algorithms}
+\subsection{Sample algorithm}
+\begin{frame}
+	\frametitle{Algorithm}
+	\begin{algorithm}[H]
+\fontsize{10pt}{12}\selectfont
+\caption{Sum of first $N$ natural numbers}
+\begin{algorithmic}[1]
+\State $S \leftarrow 0$
+\For {$i=1$ to $N$}
+\State $ S \leftarrow S + i $
+\EndFor{}
+\State Output $S$
+\end{algorithmic}
+\end{algorithm}
+\end{frame}
+
+\section{Bibliography}
+\subsection{Footnote}
+\begin{frame}
+	\frametitle{Citation} 
+	\begin{block}{}
+	``GNU, which stands for Gnu's Not Unix, is 
+	the name for the complete Unix-compatible software system which 
+	I am writing so that I can give it away free to everyone who can 
+	use it\footnotemark."
+	\end{block}
+	\footnotetext{\fullcite{stallman1985gnu}}
+	EMACS is a real-time display editor which can be extended by the 
+	user while it is running\footfullcite{stallman1981emacs}.
+\end{frame}
+
+%% Since the theme displays references as footnotes, it is not 
+%% recommended to make it redundant again in the last slide. Still, if 
+%% you want references as a separate slide, uncomment the following 
+%% frame.
+
+%\subsection{References}
+\begin{frame}
+	\frametitle{References}
+	\nocite{*}
+	\printbibliography
+\end{frame}
+
+\customframe{Questions?}{abc@mail.com}
+\customframe{Thank you.}{}
+
+
+\end{document}
