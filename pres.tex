@@ -1,11 +1,8 @@
 \documentclass{beamer}
 \usepackage{graphicx}
-\usepackage{graphics}
 \usepackage{hyperref}
-\usepackage{amsmath}
-\usepackage{ragged2e}
-\usepackage{algorithm}
-\usepackage[noend]{algpseudocode}
+\usepackage[ruled, linesnumbered]{algorithm2e}
+
 
 \setbeamertemplate{bibliography item}[text]
 \usepackage{biblatex}
@@ -21,7 +18,8 @@
 
 %% Using the iist theme
 \usetheme{iist}
-%% Assigning the date. You can use custom date as 
+
+%% Assigning the date. You can use custom date style as 
 %% \date{01 January, 2015}
 \date{\today}
 
@@ -31,7 +29,7 @@
 \author[Author-1 \& Author-2]{Author 1 and Author 2}
 
 %% Advisor/research supervisor is optional. If you don't want just 
-%% comment it.
+%% comment the line.
 \advisor{Research advisor}{Name}
 
 %% You can add a figure at the bottom of the title page. It will be 
@@ -40,23 +38,25 @@
 %% \bottomfigure{\hspace*{9cm}\includegraphics[scale=0.1]{figures/conf.png}}
 
 
-%% Assigning institute name. If you want department also, just add 
+%% Assigning institute name. If you want department, just add 
 %% before the Institute name.
 \institute[IIST]{Indian Institute of Space Science and Technology \\
 Thiruvananthapuram, Kerala, India 695547 \\}
 
 \begin{document}
 
+%% Creating title slide
 \begin{frame}[plain]
 	\titlepage
 \end{frame}
 
+%% Creating slide with table of contents
 \begin{frame}
 	\frametitle{Outline}
 	\tableofcontents
 \end{frame}
 
-
+%% Here onwards you can add your contents
 \section{Listing}
 \subsection{Itemization}
 \begin{frame}
@@ -76,14 +76,15 @@ Thiruvananthapuram, Kerala, India 695547 \\}
  		\end{itemize} 		
 \end{frame}
 
+
 \subsection{Enumeration}
 \begin{frame}
 	\frametitle{Enumerate}
 	\begin{enumerate}					
-		\item <1-> Item 1
-		\item <2-> Item 2
-		\item <3-> Item 3
-	\end{enumerate}				
+		\item Item 1
+		\item Item 2
+		\item Item 3
+	\end{enumerate}	
 \end{frame}
 
 
@@ -154,16 +155,15 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 \begin{frame}
 	\frametitle{Algorithm}
 	\begin{algorithm}[H]
-\fontsize{10pt}{12}\selectfont
-\caption{Sum of first $N$ natural numbers}
-\begin{algorithmic}[1]
-\State $S \leftarrow 0$
-\For {$i=1$ to $N$}
-\State $ S \leftarrow S + i $
-\EndFor{}
-\State Output $S$
-\end{algorithmic}
-\end{algorithm}
+		%\SetAlgoVlined
+		\caption{Sum of $N$ numbers}
+		$S = 0$\\
+		\For{$i=1:N$}
+		{
+			$S = S + i$
+		}
+		Ouput $S$
+	\end{algorithm}
 \end{frame}
 
 \section{Bibliography}
@@ -187,11 +187,11 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 %% frame.
 
 %\subsection{References}
-\begin{frame}
-	\frametitle{References}
-	\nocite{*}
-	\printbibliography
-\end{frame}
+%\begin{frame}
+	%\frametitle{References}
+	%\nocite{*}
+	%\printbibliography
+%\end{frame}
 
 \customframe{Questions?}{abc@mail.com}
 \customframe{Thank you.}{}

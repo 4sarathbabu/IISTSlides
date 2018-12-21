@@ -1,65 +1,130 @@
-Beamer style for IIST 
-===================== 
+           -------------------------------------------------
+           Guidelines for beamerthemeiist.sty LaTeX Template 
+           -------------------------------------------------
+               https://github.com/4sarathbabu/IISTSlides
 
-This is an attempt to learn how to create styles in LaTeX rather 
-than creating documents using existing styles. To make the theme 
-simple, we make use of only two lines, two squares and the default 
-LaTeX font for the entire document. The style is defined in 
-'beamerthemeiist.sty'. We added proper comments in the definition 
-script so that you can also customize the theme, if you want. Hope 
-you enjoy the theme.
+               
+The template 'beamerthemeiist.sty' is developed to create presentation
+slides using LaTeX with IIST flavor. The theme includes IIST logo and
+other related information in the title slide. Appropriate comments are
+provided in the style file so that the style can be easily customized
+according to your wish.
 
-Note: There is no compulsion to use this theme. If you don't like it, 
-please delete it for ever from your system. You can use 'Shift + Del' 
-key so that it will removed, even from your Recyle bin/Trash.  
-
-
-How to use the theme
---------------------
-
-* As the first step, extract the zip file. You can have a file named 
-  'pres.tex' as the source, that you need to compile using your 
-  LaTeX software. I added some of the basic LaTeX constructs to get 
-  familiarize with the theme. You can replace the content in 
-  'pres.tex' with your own content.
-
-* The file 'pres.bib' is for bibliography. You can put all the bibtex 
-  entries in 'pres.bib'. 
-
-* Please don't delete IIST logo ('logo.pdf') from the folder. 
-
-* For those who are familiar with Linux command line, I created a 
-  'Makefile' to make the compile process simple. Running the 'make' 
-  command will compile and generate the pdf. The command 'make 
-  clean' will delete all the unwanted files created during the 
-  compile process.
+Note: There is no compulsion to use this theme.
 
 
-Prerequisites for the theme
----------------------------
+1. Prerequisite for the theme
+-----------------------------
 
-For GNU/Linux
---------------
+For using the theme (or creating any LaTeX documents), it is 
+recommended to install the complete LaTeX package instead of the 
+minimal version. The instructions to install complete LaTeX software 
+is provided in the following link:
 
-* Make sure that the following packages are installed. If not, 
-  install them using the following command (For Ubuntu/Debian systems)
+https://4sarathbabu.github.io/uploads/2018/p1_LaTeX_Instructions.pdf
 
-  $ sudo apt-get install latexmk texlive-fonts-recommended \
-    texlive-latex-extra texlive-bibtex-extra biber
-    
-For Windows
------------
 
-* Make sure that the packages such as bibtex, biber etc. are 
-  properly installed. It is recommended to install the complete 
-  LaTeX package.
+2. How to start with the theme?
+-------------------------------
 
-If you have any comments OR if you find any errors with the code, 
-please send me a mail with the error report (if possible along with 
-the .tex file). 
-Note: Errors are preferred to comments.
+The main LaTeX source is provided in the file 'pres.tex' with
+appropriate comments. You can add your content in 'pres.tex' and
+compile it using pdflatex or using the options provided by your LaTeX
+editor.
+
+The credentials of your slides (i.e., title, author(s), advisor(s),
+and date) need to be provided using the following commands:
+
+Document Title: \title[]{}
+Author: \author[]{}
+Advisor: \advisor{Research advisor}{Name}
+Date: \date{}
+
+The theme is designed in such a way that presentation title and author
+name appear in each slide at the bottom along with date and slide
+counter. In some cases (for example, if your title is too long or the
+presentation has multiple authors), there may not be sufficient space
+at the bottom of the slides to accommodate title and authors list. In
+such cases, you can use short title or short names for authors instead
+of using the complete name. You can use square brackets provided in
+commands '\title' and '\author' to provide short titles and short
+names. As an example, consider the following commands.
+
+\title[Psychopathology]{The Psychopathology of Everyday Life}
+
+\author[S. Freud]{Sigmund Freud}
+
+With the above commands, the long title "The Psychopathology of
+Everyday Life" appears only in the first (title) slide, while the
+short title "Psychopathology" appears in each slide at the bottom
+portion. Similarly, the full name "Sigmund Freud" is displayed only in
+the title slide, while in the remaining slides, the author name will
+be displayed in short form as "S. Freud".
+
+Note: The template uses default font provided by beamer. If you have 
+the complete LaTeX package installed, it is recommended to use the 
+font Libertine for the slides. The font can be included using the 
+following line at the beginning of the file 'pres.tex'.
+	
+\usepackage{libertine}
+
+
+3. Writing Theorems, Proofs, Lemmas, Definitions, Remarks,
+-----------------------------------------------------------
+Assumptions, and Propositions
+------------------------------
+
+For writing different math environments such as theorems and proofs,  
+the following environments are defined and will be displayed in 
+blocks.
+
+    Theorem     :    \begin{theorem} ... \end{theorem}
+    Proof       :    \begin{proof} ... \end{proof}             
+    Lemma       :    \begin{lemma} ... \end{lemma}
+    Assumption  :    \begin{assumption} ... \end{assumption}
+    Proposition :    \begin{proposition} ... \end{proposition}
+    Definition  :    \begin{definition} ... \end{definition}
+    Remarks     :    \begin{remark} ... \end{remark}
+
+
+4. Adding bibliography
+----------------------
+
+Unlike reports, where the list of references appears at the last part
+of your document, the current theme uses in-frame citations, where the
+references appear as footnotes on the same slide where you are
+referring the source. For the same, the theme includes a file
+'pres.bib' to provide the BibTeX entries of all your citations. Two
+major differences in the current theme (from regular articles) for
+using citations are as follows:
+
+ (a) Use '\footfullcite{}' instead of '\cite{}'
+
+     Note: If you are citing within a block or within a column, use
+     commands '\footnotemark' and '\footnotetext{\fullcite{}}'. 
+
+ (b) Use '\addbibresource{pres.bib}' to include bibliography file in
+     your slides as the replacement for '\bibliography{}' used in
+     regular articles (This command is already added at the beginning
+     of 'pres.tex').
+
+
+5. Building the LaTeX Source
+----------------------------
+
+If you have installed the tool 'latexmk', just build 'pres.tex' using
+latexmk. Otherwise, you need to follow the default LaTeX building
+process using the following steps:
+
+1. Build pres.tex using pdflatex
+2. Build pres.bib using bibtex
+3. Build pres.tex using pdflatex (2 times)
 
 Thank you. 
-----------------------------------------------------------------------
-Sarath Babu 
-E-Mail: sarath.babu.2014@ieee.org
+The latest version of the LaTeX template can be downloaded from 
+https://github.com/4sarathbabu/IISTSlides
+
+If you find any errors or have any suggestions send mail to 
+Email:4sarathbabu@gmail.com
+
+                                 o o o o

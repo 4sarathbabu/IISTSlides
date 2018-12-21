@@ -1,9 +1,22 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% ------------Beamer Presentation Template for IIST-------------- %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---'beamerthemeiist.sty' Presentation Slides Template for IIST--- %%
+%%                  Copyright (C) 2018  Sarath Babu                  %%
 
-%%% Author - Sarath Babu
-%%% Email: 4sarathbabu@gmail.com
+% This program is free software: you can redistribute it and/or modify 
+% it under the terms of the GNU General Public License as published by 
+% the Free Software Foundation, either version 3 of the License, or 
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful, but 
+% WITHOUT ANY WARRANTY; without even the implied warranty of 
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+% General Public License for more details.
+
+% You should have received a copy of the GNU General Public License 
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+% Contact email: 4sarathbabu@gmail.com
+% URL: https://github.com/4sarathbabu/IISTSlides
+
 
 %%% The preamble 
 \mode<presentation>
@@ -13,6 +26,13 @@
 \usetikzlibrary{shadows}
 \usepackage[size=scriptsize]{caption}
 \usepackage[absolute, overlay]{textpos}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+%% ---- Assumption, Remark, and Proposition
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
 
 %%% Define custom commands for the slides
 %% Command for advisor in the title page
@@ -148,7 +168,7 @@
 		\setbeamercolor{subsec}{fg=TopLine!150,bg=white}
 		\hspace{-2mm}
 		\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=0.75ex,left]{subsec}
-			\usebeamerfont{subsection in head/foot}{\hspace*{2ex}{\texttt{\insertsubsectionhead}}}
+			\usebeamerfont{subsection in head/foot}{\hspace*{2ex}{\insertsubsectionhead}}
 		\end{beamercolorbox}
 	}
 	\hfill
